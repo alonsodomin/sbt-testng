@@ -14,3 +14,7 @@ project/plugins/project/
 project/plugins/target/
 .idea*
 *.iml
+.ensime
+.ensime_cache/
+test-output/
+tests/test-results/

@@ -1,0 +1,4 @@
+<plugin>
+  <name>scalajs-testng</name>
+  <classname>io.github.soc.testng.ScalaJSTestNGPlugin</classname>
+</plugin>
