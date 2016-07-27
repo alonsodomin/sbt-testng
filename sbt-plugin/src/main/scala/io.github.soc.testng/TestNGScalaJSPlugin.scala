@@ -6,12 +6,13 @@ import sbt.Keys._
 import org.scalajs.sbtplugin._
 import org.scalajs.sbtplugin.ScalaJSPlugin
 
-object ScalaJSTestNGPlugin extends AutoPlugin {
+object TestNGScalaJSPlugin extends AutoPlugin {
   override def requires: Plugins = ScalaJSPlugin
 
   import ScalaJSPlugin.autoImport._
 
   override def projectSettings: Seq[Setting[_]] = Seq(
+    testFrameworks += TestNGTestFramework,
     /* The `scala-js-test-plugin` configuration adds a plugin only to the `test`
      * configuration. It is a refinement of the `plugin` configuration which adds
      * it to both `compile` and `test`.

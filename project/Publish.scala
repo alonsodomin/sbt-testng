@@ -30,9 +30,9 @@ object Publish {
     pomIncludeRepository := { _ => false }
   )
 
-  lazy val pluginPublishSettings: Seq[Setting[_]] = /*bintrayPublishSettings ++*/ Seq(
+  lazy val pluginPublishSettings: Seq[Setting[_]] = bintrayPublishSettings ++ libraryPublishSettings ++ Seq(
     publishArtifact in Test := false,
-    publishMavenStyle       := false,
+    publishMavenStyle       := true,
 
     bintrayRepository       := "sbt-plugins",
     bintrayOrganization     := None
@@ -40,9 +40,8 @@ object Publish {
 
   // Had to look up Maven documentation on the difference between developer and contributor.
   //
-  // I would add everyone on this list as a developer considering how much code, ideas and help they
-  // contributed, but in the interest of reducing the amount of questions/reuqests/... accidentally
-  // heading their way, I move them to contributors.
+  // I would add everyone on this list as a developer but in the interest of reducing the amount of
+  // questions/reuqests/... accidentally heading their way, I move them to contributors.
   //
   // Maven doc about the developers section:
   //   "A good rule of thumb is, if the person should not be contacted about the project, they need not be listed here."

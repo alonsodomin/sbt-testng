@@ -15,7 +15,7 @@ object Build {
     licenses           += ("BSD 3-Clause License", url("http://opensource.org/licenses/BSD-3-Clause")),
     scalaVersion       := "2.11.8",
     crossScalaVersions := Seq("2.10.6", "2.12.0-M5", "2.11.8"),
-    isSnapshot         := true,
+    //isSnapshot         := true,
     scalacOptions     ++= Seq("-Xexperimental"),
     scalaJSUseRhino in Global := false
   )

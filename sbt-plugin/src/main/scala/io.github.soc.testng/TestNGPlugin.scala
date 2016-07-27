@@ -29,7 +29,8 @@ import sbt._
 import sbt.Keys._
 
 object TestNGPlugin extends AutoPlugin with Keys {
-  def testNGSettings: Seq[Setting[_]] = Seq(
+
+  override def projectSettings: Seq[Setting[_]] = Seq(
 	  resolvers += Resolver.sbtPluginRepo("releases"), // why is that necessary, and why like that?
 
     testNGVersion := "6.9.10",
@@ -46,7 +47,6 @@ object TestNGPlugin extends AutoPlugin with Keys {
 
     testOptions += Tests.Argument(TestNGTestFramework, (("-d" +: testNGOutputDirectory.value +: testNGParameters.value) ++ testNGSuites.value):_*))
 
-  object TestNGTestFramework extends TestFramework("io.github.soc.testng.TestNGFramework") {
-    override def toString = "TestNG"
-  }
+  @deprecated("use projectSettings instead", "4.0.0-M0")
+  def testNGSettings: Seq[Setting[_]] = projectSettings
 }

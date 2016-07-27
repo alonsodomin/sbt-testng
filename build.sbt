@@ -6,7 +6,7 @@ val testNGRuntimeJS    = Build.testNGRuntimeJS
 val testNGInterfaceJVM = Build.testNGInterfaceJVM
 val testNGInterfaceJS  = Build.testNGInterfaceJS
 
-// We don't need "testNGPluginJVM" because we can process annotations at runtime
+// We don't need "testNGPluginJVM" because we can process annotations at runtime on the JVM
 val testNGPluginJS     = Build.testNGPluginJS
 
 val testNGTestsJVM     = Build.testNGTestsJVM
