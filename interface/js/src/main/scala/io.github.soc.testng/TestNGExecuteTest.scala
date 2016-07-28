@@ -81,7 +81,7 @@ final class TestNGExecuteTest(
 
     def executeTestMethods(): Unit = {
       val expectedExceptions = testAnnotation.expectedExceptions
-      println(s"$methodName: ${expectedExceptions.toList}")
+      // println(s"$methodName: ${expectedExceptions.toList}")
       try {
         if (verbose) logFormattedInfo(decodedMethodName, "started")
         else logFormattedDebug(decodedMethodName, "started")

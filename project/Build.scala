@@ -9,7 +9,7 @@ object Build {
   val testNGTestFramework = new TestFramework("io.github.soc.testng.TestNGFramework")
 
   lazy val commonSettings: Seq[Setting[_]] = Seq(
-    version            := "4.0.0-M1",
+    version            := "4.0.0-M2", // Also change TestNGPlugin!
     organization       := "io.github.soc",
     homepage           := Some(url("https://github.com/sbt/sbt-testng")),
     licenses           += ("BSD 3-Clause License", url("http://opensource.org/licenses/BSD-3-Clause")),

@@ -30,6 +30,8 @@ import sbt.Keys._
 
 object TestNGPlugin extends AutoPlugin with Keys {
 
+  lazy val version = "4.0.0-M2"
+
   override def projectSettings: Seq[Setting[_]] = Seq(
 	  resolvers += Resolver.sbtPluginRepo("releases"), // why is that necessary, and why like that?
 
@@ -39,9 +41,9 @@ object TestNGPlugin extends AutoPlugin with Keys {
     testNGSuites := Seq(((resourceDirectory in Test).value / "testng.yaml").absolutePath),
 
     libraryDependencies ++= Seq(
-      "org.testng"     % "testng"     % testNGVersion.value % "test->default",
-      "org.yaml"       % "snakeyaml"  % "1.12"              % "test",
-      "io.github.soc" %% "sbt-testng" % "3.0.2"             % "test"),
+      "org.testng"     % "testng"           % testNGVersion.value % "test->default",
+      "org.yaml"       % "snakeyaml"        % "1.12"              % "test",
+      "io.github.soc" %% "testng-interface" % version             % "test"),
 
     testFrameworks += TestNGTestFramework,
 

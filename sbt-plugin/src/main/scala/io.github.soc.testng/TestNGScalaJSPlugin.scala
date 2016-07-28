@@ -6,6 +6,8 @@ import sbt.Keys._
 import org.scalajs.sbtplugin._
 import org.scalajs.sbtplugin.ScalaJSPlugin
 
+import io.github.soc.testng.TestNGPlugin.version
+
 object TestNGScalaJSPlugin extends AutoPlugin {
   override def requires: Plugins = ScalaJSPlugin
 
@@ -19,9 +21,9 @@ object TestNGScalaJSPlugin extends AutoPlugin {
      */
     ivyConfigurations += config("testng-scalajs-plugin").hide,
     libraryDependencies ++= Seq(
-        "io.github.soc" %%% "testng-runtime"         % "4.0.0-M0" % "test",
-        "io.github.soc" %%% "testng-interface"       % "4.0.0-M0" % "test",
-        "io.github.soc"   % "testng-scalajs-plugin"  % "4.0.0-M0" % "testng-scalajs-plugin" cross CrossVersion.full),
+        "io.github.soc" %%% "testng-runtime"         % version % "test",
+        "io.github.soc" %%% "testng-interface"       % version % "test",
+        "io.github.soc"   % "testng-scalajs-plugin"  % version % "testng-scalajs-plugin" cross CrossVersion.full),
     scalacOptions in Test ++= {
       val report = update.value
       val jars = report.select(configurationFilter("testng-scalajs-plugin"))

@@ -81,7 +81,7 @@ To facilitate that, it provides additional artifacts for Scala.js:
 | <sub>Platform support</sub> | Scala (JVM)                           | Scala (JVM), Scala.js (JavaScript)    |
 | <sub>TestNG config</sub>    | TestNGPlugin keys, xml file, yml file | TestNGPlugin keys, xml file, yml file (JVM only)[¹](#1) |
 | <sub>TestNG runtime</sub>   | TestNG library                        | TestNG library (JVM), testng-runtime (JavaScript) |
-| <sub>Plugin dependency</sub>| <sub>`"de.johoop" % "sbt-testng-plugin" % "3.0.2"`</sub> | <sub>`"io.github.soc" % "sbt-testng" % "4.0.0-M0"`</sub> |
+| <sub>Plugin dependency</sub>| <sub>`"de.johoop" % "sbt-testng-plugin" % "3.0.2"`</sub> | <sub>`"io.github.soc" % "sbt-testng" % "4.0.0-M2"`</sub> |
 
 
 ###### 1
@@ -96,7 +96,7 @@ addSbtPlugin("de.johoop" % "sbt-testng-plugin" % "3.0.2")
 to
 
 ```scala
-addSbtPlugin("io.github.soc" % "sbt-testng" % "4.0.0-M0")
+addSbtPlugin("io.github.soc" % "sbt-testng" % "4.0.0-M2")
 ```
 is all what's necessary.
 

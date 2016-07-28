@@ -344,7 +344,7 @@ class ScalaJSTestNGPlugin(val global: Global) extends NscPlugin {
             case ann if ann.atp.typeSymbol == TestClass =>
               if (ann.original.isInstanceOf[Block])
                 reporter.error(ann.pos, "@Test(timeout = ...) is not supported in Scala.js TestNG Framework")
-              else (println(ann.original))
+              else ()//(println(ann.original))
 
             case _ => // all is well
           }
