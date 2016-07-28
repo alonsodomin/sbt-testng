@@ -73,15 +73,34 @@ To facilitate that, it provides additional artifacts for Scala.js:
 - `testng-interface` provides the glue between Scala.js' `test-interface` and `testng-runtime`
 - `testng-scalajs-plugin` rewrites TestNG annotations at compile-time as Scala.js doesn't support reflection
 
+### Example – CrossProject
+
+```scala
+import io.github.soc.testng.{TestNGPlugin, TestNGScalaJSPlugin}
+import io.github.soc.testng.TestNGPlugin.testNGSuites
+
+lazy val yourProject = crossProject.crossType(CrossType.Full).in(file("."))
+  .jvmConfigure(_.enablePlugins(TestNGPlugin))
+  .jsConfigure (_.enablePlugins(TestNGScalaJSPlugin))
+  .settings(commonSettings: _*)
+  .jvmSettings(
+    // Use TestNGPlugin keys to configure TestNG (JVM only)
+    TestNGPlugin.testNGSuites := Seq(((resourceDirectory in Test).value / "testng.xml").absolutePath))
+  .jsSettings (
+    // ...
+  )
+```
+
 ### Differences between version 3 and version 4
 
-|                  | Version 3                             | Version 4                             |
-| ---------------- | ------------------------------------- | ------------------------------------- |
-| <sub>Scala version</sub>    | 2.9, 2.10, 2.11                       | 2.10, 2.11, 2.12-M5                   |
-| <sub>Platform support</sub> | Scala (JVM)                           | Scala (JVM), Scala.js (JavaScript)    |
-| <sub>TestNG config</sub>    | TestNGPlugin keys, xml file, yml file | TestNGPlugin keys, xml file, yml file (JVM only)[¹](#1) |
-| <sub>TestNG runtime</sub>   | TestNG library                        | TestNG library (JVM), testng-runtime (JavaScript) |
-| <sub>Plugin dependency</sub>| <sub>`"de.johoop" % "sbt-testng-plugin" % "3.0.2"`</sub> | <sub>`"io.github.soc" % "sbt-testng" % "4.0.0-M2"`</sub> |
+|                             | Version 3                                                 | Version 4                                                 |
+| --------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| <sub>Scala version</sub>    | 2.9, 2.10, 2.11                                           | 2.10, 2.11, 2.12-M5                                       |
+| <sub>Platform support</sub> | Scala (JVM)                                               | Scala (JVM), Scala.js (JavaScript)                        |
+| <sub>TestNG config</sub>    | TestNGPlugin keys, xml file, yml file                     | TestNGPlugin keys, xml file, yml file (JVM only)[¹](#1)   |
+| <sub>TestNG runtime</sub>   | TestNG library                                            | TestNG library (JVM), testng-runtime (JavaScript)         |
+| <sub>Plugin dependency</sub>| <sub>`"de.johoop" % "sbt-testng-plugin" % "3.0.2"`</sub>  | <sub>`"io.github.soc" % "sbt-testng" % "4.0.0-M2"`</sub>  |
+| <sub>SBT testOnly</sub>     | Not supported                                             | Not supported (JVM), supported (JavaScript)               |
 
 
 ###### 1

@@ -1,6 +1,6 @@
 val testNG             = Build.root
 
-// "testNGRuntimeJVM" is the TestNG library
+// "testNGRuntimeJVM" is the "real" TestNG library on the JVM
 val testNGRuntimeJS    = Build.testNGRuntimeJS
 
 val testNGInterfaceJVM = Build.testNGInterfaceJVM
