@@ -14,7 +14,7 @@ object Build {
     homepage           := Some(url("https://github.com/sbt/sbt-testng")),
     licenses           += ("BSD 3-Clause License", url("http://opensource.org/licenses/BSD-3-Clause")),
     scalaVersion       := "2.11.8",
-    crossScalaVersions := Seq("2.10.6", "2.12.0-M5", "2.11.8"),
+    crossScalaVersions := Seq("2.10.6", "2.12.0", "2.11.8"),
     //isSnapshot         := true,
     scalacOptions     ++= Seq("-Xexperimental"),
     scalaJSUseRhino in Global := false
@@ -55,7 +55,7 @@ object Build {
       libraryDependencies += "org.testng"     % "testng"         % "6.9.10")
         //"com.google.inject" % "guice" % "4.1" % "provided"
     .jsSettings(
-      libraryDependencies += "org.scala-js" %% "scalajs-test-interface" % "0.6.11")
+      libraryDependencies += "org.scala-js" %% "scalajs-test-interface" % "0.6.13")
 
   // This is the compiler plugin that transforms test annotations into code at compile time.
   // We can't do this at runtime, as Scala.js lacks the necessary reflection facilities.
@@ -81,7 +81,8 @@ object Build {
       sbtPlugin          := true,
       scalaVersion       := "2.10.6",
       crossScalaVersions := Seq("2.10.6"),
-      addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.11"))
+      addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.13")
+    )
 
   //// TESTS ////
   val commonTestNGTestsSettings = commonSettings ++ noArtifactsAndPublishingSettings ++ Seq(
@@ -99,7 +100,7 @@ object Build {
     .settings(commonTestNGTestsSettings)
     .settings(
         testFrameworks += new TestFramework("io.github.soc.testng.TestNGFramework"),
-        libraryDependencies ++= Seq("org.scala-js" %% "scalajs-test-interface" % "0.6.10"))
+        libraryDependencies ++= Seq("org.scala-js" %% "scalajs-test-interface" % "0.6.13"))
     .enablePlugins(ScalaJSPlugin).withScalaJSTestNGPlugin.dependsOn(
       testNGRuntimeJS % "test",
       testNGInterfaceJS % "test"
